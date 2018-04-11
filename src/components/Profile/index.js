@@ -38,6 +38,7 @@ class Profile extends Component {
                   name={repo.name}
                   desc={repo.description}
                   url={repo.html_url}
+                  lang={repo.language}
                 />
               ))}
             </div>
