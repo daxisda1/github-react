@@ -3,7 +3,7 @@ import Header from "../components/Header";
 
 const Home = () => (
   <div>
-    <Header title="Github App" />
+    <Header />
     <main className="container mt-5 pt-5">
       <div className="starter-template">
         <h1>Home</h1>

@@ -1,26 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Repo from "../Repo";
 
 class Profile extends Component {
-  state = {
-    username: "daxisda1",
-    profile: {},
-    repos: []
-  };
-
-  componentWillMount() {
-    fetch(`https://api.github.com/users/${this.state.username}`)
-      .then(res => res.json())
-      .then(profile => this.setState({ profile }));
-
-    fetch(`https://api.github.com/users/${this.state.username}/repos`)
-      .then(res => res.json())
-      .then(repos => this.setState({ repos }));
-  }
-
   render() {
-    const { profile } = this.state;
-    const { repos } = this.state;
+    const { profile } = this.props;
+    const { repos } = this.props;
+
     return (
       <div className="container">
         <div className="row">
@@ -35,6 +21,7 @@ class Profile extends Component {
             <div className="row">
               {repos.map(repo => (
                 <Repo
+                  key={repo.id}
                   name={repo.name}
                   desc={repo.description}
                   url={repo.html_url}
@@ -49,4 +36,12 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+  return {
+    username: state.username,
+    profile: state.profile,
+    repos: state.repos
+  };
+};
+
+export default connect(mapStateToProps)(Profile);

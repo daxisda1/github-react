@@ -1,14 +1,8 @@
 import React from "react";
-import Header from "../components/Header";
-import Profile from "../components/Profile";
+import { Redirect } from "react-router-dom";
 
-const Mine = () => (
-  <div>
-    <Header title="Github App" />
-    <main className="container mt-5 pt-5">
-      <Profile />
-    </main>
-  </div>
-);
+const username = "daxisda1";
+
+const Mine = () => <Redirect to={`/user/${username}`} />;
 
 export default Mine;
